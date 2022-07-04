@@ -9,16 +9,33 @@ class App {
         const photographersData = data.photographers
         const mediaData = data.media
 
+        // if home page
         if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
-            console.log(photographersData)
             photographersData
-                .map(photographer => {
+                // We create an instance of our photographer model 
+                // for each photographer
+                .map(photographer => new Photographer(photographer))
+                // now for each model created, we instanciate and render a card
+                .forEach(photographer => {
                     const Template = new PhotographerCard(photographer)
                     this.mainWrapper.appendChild(
                         Template.createPhotographerCard()
                     )
                 })
-        }
+        } else {
+            // get id from local storage
+            const id = parseInt(localStorage.getItem('id'))
+            // filter method returns an array of objects
+            const photographerArray = photographersData.filter(photographer => photographer.id === id)
+            // but we need to send an object to our constructor
+            // our photographer object is photographerArray[0]
+            // so we create a new instance of Photographer with it
+            const photographer = new Photographer(photographerArray[0])
+            // we create the banner instance
+            const Template = new PhotographerBanner(photographer)
+            // we apply the method to render in DOM
+            Template.createPhotographerBanner()
+        }  
     }
 }
 

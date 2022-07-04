@@ -8,10 +8,10 @@ class PhotographerCard {
         wrapper.classList.add('card')
 
         const photographerCard = `
-            <a href="./profile.html" key="${this._photographer.id}" class="link" aria-label="Go to ${this._photographer.name}'s profile">
+            <a href="/pages/profile.html" key="${this._photographer.id}" class="link" aria-label="Go to ${this._photographer.name}'s profile">
                 <div class="profile-card-header flex column" key="${this._photographer.id}">
                     <div class="img-container profile-pic-container flex center">
-                        <img class="profile-pic" src="./assets/Sample_Photos/Photographers_ID_Photos/${this._photographer.portrait}" alt="${this._photographer.name}" key="${this._photographer.id}" width="200" height="200">
+                        <img class="profile-pic" src="${this._photographer.portrait}" alt="${this._photographer.name}" key="${this._photographer.id}" width="200" height="200">
                     </div>
                     <h2 class="profile-name" key="${this._photographer.id}">${this._photographer.name.replaceAll('_', ' ')}</h2>
                 </div>
@@ -24,6 +24,12 @@ class PhotographerCard {
         `
 
         wrapper.innerHTML = photographerCard
+        
+        // send photographer id to local storage
+        wrapper.addEventListener('click', (e) => {
+            const id = e.target.getAttribute('key');
+            localStorage.setItem('id', id);
+        })
         return wrapper
     }
 }
