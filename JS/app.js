@@ -6,11 +6,19 @@ class App {
 
     async main() {
         const data = await this.dataApi.getData()
-        const photographers = data.photographers
-        const media = data.media
+        const photographersData = data.photographers
+        const mediaData = data.media
 
-
-        
+        if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+            console.log(photographersData)
+            photographersData
+                .map(photographer => {
+                    const Template = new PhotographerCard(photographer)
+                    this.mainWrapper.appendChild(
+                        Template.createPhotographerCard()
+                    )
+                })
+        }
     }
 }
 
