@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fisheye</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../index.css">
+</head>
+
+<body>
+    <header class="container header flex">
+        <a href="/" aria-label="Fisheye Home page">
+            <img src="../assets/logo.png" alt="logo">
+        </a>
+        <h1 class="heading">Nos photographes</h1>
+    </header>
+    <main class="container profile-main">
+        <section class="profile-header flex">
+            <div class="profile-infos flex column">
+                <h2 class="profile-name profile-name-big"></h2>
+                <h3 class="profile-location profile-location-big"><span class="city"></span>, <span
+                        class="country"></span></h3>
+                <p class="profile-description profile-description-big"></p>
+            </div>
+            <button type="button" class="btn contact-modal-toggle" data-toggle="contact-modal" aria-label="Contact Me" aria-expanded="false">Contactez-moi</button>
+            <div class="img-container profile-pic-container flex center">
+                <img class="profile-pic" src="" alt="" width="200" height="200">
+            </div>
+
+            <div class="modal contact-modal flex center" role="dialog" data-visible="false" aria-hidden="true"
+            data-toggle="contact-modal">
+            <div class="contact-modal-dialog modal-dialog" role="document" data-visible="false">
+                <div>
+                    <div class="modal-header">
+                        <h5>Contactez-moi <span class="modal-header-name"></span></h5>
+                        <button type="button" class="close-btn contact-modal-close" data-toggle="contact-modal" aria-label="Close">
+                            <span aria-hidden="true" data-toggle="contact-modal">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <form class="contact-form grid">
+                                <div>
+                                    <label for="first" class="contact-label">Prénom</label>
+                                    <input type="text" id="first" class="contact-input">
+                                </div>
+                                <div>
+                                    <label for="last" class="contact-label">Nom</label>
+                                    <input type="text" id="last"class="contact-input">
+                                </div>
+                                <div>
+                                    <label for="mail" class="contact-label">Email</label>
+                                    <input type="text" id="mail"class="contact-input">
+                                </div>
+                                <div>
+                                    <label for="message" class="contact-label">Votre message</label>
+                                    <textarea id="message" class="contact-input" cols="30" rows="3"></textarea>
+                                </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer flex">
+                        <button type="button" class="btn" data-toggle="contact-modal" onclick="submitForm()">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        
+        <div class="content-section">
+            <div class="sorting flex">
+                <label class="sorting-label">Trier par</label>
+                <div class="dropdown" role="listbox" aria-haspopup="listbox" aria-expanded="false">
+                    <div id="popularity-sorting" class="dropbtn drop-link btn flex" role="option" tabindex="0" aria-label="popularity" data-name="sorting-option" data-value="popularité" onclick="{(e) => setSortingOptions(e)}">Popularité</div>
+                    <div class="dropdown-content" aria-hidden="true">
+                        <div id="date-sorting" class="drop-link" role="option" tabindex="0" aria-label="date" data-name="sorting-option" data-value="date" onclick="(e) => setSortingOptions(e)">Date</div>
+                        <div id="title-sorting" class="drop-link" role="option" tabindex="0" aria-label="title" data-name="sorting-option" data-value="titre" onclick="(e) => setSortingOptions(e)">Titre</div>
+                    </div>
+                    <svg class="arrow" width="16" height="11" viewBox="0 0 16 11" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
+                            fill="white" />
+                    </svg>
+                </div>
+            </div>
+            <div class="media-section grid">
+                <!-- <article class="media-card">
+                    <div class="media-img-container">
+                        <img src="../assets/Sample Photos/Rhode/Sport_2000_with_8.jpg" alt="">
+                    </div>
+                    <div class="media-card-footer flex">
+                        <p class="media-card-name">Arc-en-ciel</p>
+                        <div class="media-card-like flex">
+                            <p class="media-card-like-number">12</p>
+                            <svg class="media-card-heart" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z" fill="#911C1C"/>
+                            </svg>                                
+                        </div>
+                    </div>
+                </article> -->
+            </div>
+            <section class="carousel-overlay center" data-visible="false" aria-hidden="true" aria-label="Pictures slider">
+                <div class="carousel-container">
+                    <button type="button" class="close-btn carousel-close" aria-label="Close" onclick="closeCarousel()">
+                        <span aria-hidden="true" data-toggle="contact-carousel">&times;</span>
+                    </button>
+                    <button>
+                        <span class="fas fa-chevron-left arrow-left flex center">&lsaquo;</span>
+                    </button>
+                    <button>
+                        <span class="fas fa-chevron-right arrow-right flex center">&rsaquo;</span>
+                    </button>
+                    <div class="carousel flex">
+                        
+                    </div>
+                </div>
+            </section>
+        </div>
+        <aside class="side-popup flex">
+            <div class="popup-like-container flex">
+                <p class="popup-like-counter"></p>
+                <svg class="media-card-heart" width="19" height="19" viewBox="0 0 19 19" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z"
+                        fill="#000000" />
+                </svg>
+            </div>
+            <p><span class="price"></span> € / jour</p>
+        </aside>
+    </main>
+
+    <script src="../index.js" async defer></script>
+</body>
+
+</html>
