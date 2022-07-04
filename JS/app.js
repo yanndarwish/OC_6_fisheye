@@ -1,8 +1,8 @@
 class App {
     constructor() {
         this.mainWrapper = document.querySelector('.main')
-        this.dataApi = new DataApi('/data.json')
         this.mediaSection = document.querySelector('.media-section')
+        this.dataApi = new DataApi('/data.json')
     }
 
     async main() {
@@ -24,7 +24,7 @@ class App {
                     )
                 })
         } else {
-            // get id from local storage
+            // get photographer id from local storage
             const id = parseInt(localStorage.getItem('id'))
             // filter method returns an array of objects
             const photographerArray = photographersData.filter(photographer => photographer.id === id)
