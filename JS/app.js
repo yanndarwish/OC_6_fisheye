@@ -2,6 +2,7 @@ class App {
     constructor() {
         this.mainWrapper = document.querySelector('.main')
         this.dataApi = new DataApi('/data.json')
+        this.mediaSection = document.querySelector('.media-section')
     }
 
     async main() {
@@ -35,6 +36,21 @@ class App {
             const Template = new PhotographerBanner(photographer)
             // we apply the method to render in DOM
             Template.createPhotographerBanner()
+
+            // get the media of the photograph
+            const mediasArray = mediaData.filter(media => media.photographerId === id)
+
+            mediasArray
+            // create an instance of Media model for each media of the array
+                .map(media => new Media(media, photographer))
+                // now for each model created, we instanciate and render a card
+                .forEach(media => {
+                    const Template = new MediaCard(media)
+                    Template.createMediaCard()
+                    this.mediaSection.appendChild(
+                        Template.createMediaCard()
+                    )
+                })
         }  
     }
 }
