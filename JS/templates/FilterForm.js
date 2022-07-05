@@ -6,24 +6,17 @@ class FilterForm {
         this.wrapper = document.createElement('div')
         this.filterWrapper = document.querySelector('.filter-wrapper')
         this.mediaSection = document.querySelector('.media-section')
+
+        this.ProxyFilter = new ProxyFilter()
     }
 
     async filterMedias(option) {
         this.clearMediaSection()
 
-        let filteredMedias = []
+        // const filteredData = await this.ProxyFilter.sorter(this._Medias, option)
+        const filteredData = Filter.filter(this._Medias, option)
 
-        switch (option) {
-            case 'popular':
-                filteredMedias = await Filter.filterByPopularity(this._Medias)
-                break
-            case 'date':
-                filteredMedias = await Filter.filterByDate(this._Medias)
-                break
-            case 'title':
-                filteredMedias = await Filter.filterByTitle(this._Medias)
-                break
-        }
+        const filteredMedias = filteredData.data
 
         filteredMedias
             .map(media => new Media(media, this._photographer))
