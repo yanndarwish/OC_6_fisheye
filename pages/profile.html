@@ -71,21 +71,17 @@
         </section>
         
         <div class="content-section">
-            <div class="sorting flex">
-                <label class="sorting-label">Trier par</label>
-                <div class="dropdown" role="listbox" aria-haspopup="listbox" aria-expanded="false">
+            <div class="filter-wrapper">
+                <!-- form comes here -->
+            </div>
+                <!-- <div class="dropdown" role="listbox" aria-haspopup="listbox" aria-expanded="false">
                     <div id="popularity-sorting" class="dropbtn drop-link btn flex" role="option" tabindex="0" aria-label="date" data-name="sorting-option" data-value="date" onclick="{(e) => setSortingOptions(e)}">Date</div>
                     <div class="dropdown-content" aria-hidden="true">
                         <div id="date-sorting" class="drop-link" role="option" tabindex="0" aria-label="popularity" data-name="sorting-option" data-value="popularité" onclick="(e) => setSortingOptions(e)">Popularité</div>
                         <div id="title-sorting" class="drop-link" role="option" tabindex="0" aria-label="title" data-name="sorting-option" data-value="titre" onclick="(e) => setSortingOptions(e)">Titre</div>
                     </div>
-                    <svg class="arrow" width="16" height="11" viewBox="0 0 16 11" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M1.88 10.5466L8 4.43996L14.12 10.5466L16 8.66663L8 0.66663L1.64355e-07 8.66663L1.88 10.5466Z"
-                            fill="white" />
-                    </svg>
-                </div>
+                    
+                </div> -->
             </div>
             <div class="media-section grid">
                 <!-- <article class="media-card">
@@ -137,11 +133,15 @@
     <!-- models -->
     <script src="/JS/models/Photographer.js"></script>
     <script src="/JS/models/Media.js"></script>
-        
+    
     <!-- templates -->
     <script src="/JS/templates/PhotographerCard.js"></script>
     <script src="/JS/templates/PhotographerBanner.js"></script>
     <script src="/JS/templates/MediaCard.js"></script>
+    <script src="/JS/templates/FilterForm.js"></script>
+    
+    <!-- filter -->
+    <script src="/JS/filters/Filter.js"></script>
 
     <script src="/JS/api/Api.js"></script>
     <script src="/JS/app.js"></script>

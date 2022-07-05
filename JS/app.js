@@ -46,11 +46,14 @@ class App {
                 // now for each model created, we instanciate and render a card
                 .forEach(media => {
                     const Template = new MediaCard(media)
-                    Template.createMediaCard()
                     this.mediaSection.appendChild(
                         Template.createMediaCard()
                     )
                 })
+
+            // render filter form
+            const Filter = new FilterForm(mediasArray, photographer)
+            Filter.render()
         }  
     }
 }
