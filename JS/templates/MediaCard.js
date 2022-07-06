@@ -1,12 +1,29 @@
 class MediaCard {
-    constructor(media) {
+    constructor(media, LikeSubject) {
         this._media = media
+        this.LikeSubject = LikeSubject
+
+        this._$wrapper = document.createElement('article')
+        this._$wrapper.classList.add('media-card')
     }
 
+    handleLikeButton(wrapper) {
+        const that = this
+
+        this._$wrapper
+            .querySelector('.media-card-heart')
+            .addEventListener('click', function() {
+                if (this.classList.contains('liked')) {
+                    this.classList.remove('liked')
+                    that.LikeSubject.fire('DEC', wrapper)
+                } else {
+                    this.classList.add('liked')
+                    that.LikeSubject.fire('INC', wrapper)
+                }
+            })
+    }
     createMediaCard() {
-        const wrapper = document.createElement('article')
-        wrapper.classList.add('media-card')
-        wrapper.setAttribute('data-key', this._media.id)
+        this._$wrapper.setAttribute('data-key', this._media.id)
 
         const source = this._media._image ? `<img src="${this._media.source}" alt="${this._media.title}" width="350" height="300">`
         : `<video width="350" height="300">
@@ -30,8 +47,9 @@ class MediaCard {
             </div>
         ` 
 
-        wrapper.innerHTML = mediaCard
+        this._$wrapper.innerHTML = mediaCard
+        this.handleLikeButton(this._$wrapper)
 
-        return wrapper
+        return this._$wrapper
     }
 }

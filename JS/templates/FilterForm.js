@@ -13,8 +13,8 @@ class FilterForm {
     async filterMedias(option) {
         this.clearMediaSection()
 
-        // const filteredData = await this.ProxyFilter.sorter(this._Medias, option)
-        const filteredData = Filter.filter(this._Medias, option)
+        const filteredData = await this.ProxyFilter.sorter(this._Medias, option)
+        // const filteredData = Filter.mediaFilter(this._Medias, option)
 
         const filteredMedias = filteredData.data
 

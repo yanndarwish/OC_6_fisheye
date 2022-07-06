@@ -1,26 +1,20 @@
 class ProxyFilter {
     constructor() {
-        this.cache =[]
+        this.cache = []
     }
-
-    async sorter(medias, option) {
-        console.log('cache array before')
-        console.log(this.cache)
-
-        const cachedResult = this.cache.find(elt => elt.key === option)
+    sorter(medias, option) {
+        // parse the stringified cache to manipulate
+        const parsedCache = this.cache.map(elt => JSON.parse(elt))
+        const cachedResult = parsedCache.find(elt => elt.key === option) 
 
         if (cachedResult) {
-            console.log('get from cache')
-            console.log(cachedResult)
             return cachedResult
         }
+        
+        let filteredData = Filter.mediaFilter(medias, option)
 
-        const filteredData = Filter.filter(medias, option)
-
-        // console.log(filteredData)
-        this.cache.push(filteredData)
-        console.log('cache array after')
-        console.log(this.cache)
+        // stringify to prevent cache push malfunction 
+        this.cache.push(JSON.stringify(filteredData))
 
         return filteredData
     }

@@ -290,11 +290,16 @@ select {
     color:white;
 }
 
+select:focus {
+    outline:1px solid black;
+}
+
 .select {
     position:relative;
     align-items: center;
     padding:1.5rem;
 }
+
 
 .arrow {
     position:absolute;
