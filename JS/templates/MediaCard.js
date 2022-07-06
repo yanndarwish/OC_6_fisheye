@@ -1,7 +1,6 @@
 class MediaCard {
-    constructor(media, LikeSubject) {
+    constructor(media) {
         this._media = media
-        this.LikeSubject = LikeSubject
 
         this._$wrapper = document.createElement('article')
         this._$wrapper.classList.add('media-card')
@@ -15,10 +14,10 @@ class MediaCard {
             .addEventListener('click', function() {
                 if (this.classList.contains('liked')) {
                     this.classList.remove('liked')
-                    that.LikeSubject.fire('DEC', wrapper)
+                    LikeCounter.like('DEC', wrapper)
                 } else {
                     this.classList.add('liked')
-                    that.LikeSubject.fire('INC', wrapper)
+                    LikeCounter.like('INC', wrapper)
                 }
             })
     }

@@ -1,10 +1,7 @@
 class LikeCounter {
-    constructor() {
-    }
 
-    update(action, wrapper) {
+    static like(action, wrapper) {
         let likeNumber = wrapper.querySelector('.media-card-like-number')
-        console.log(likeNumber)
         if (action === 'INC') {
             likeNumber.innerHTML = parseInt(likeNumber.innerHTML) + 1
         } else if (action === 'DEC') {
@@ -12,6 +9,5 @@ class LikeCounter {
         } else {
             throw 'Unknown action'
         }
-
     }
 }

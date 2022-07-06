@@ -4,9 +4,6 @@ class App {
         this.mediaSection = document.querySelector('.media-section')
 
         this.dataApi = new DataApi('/data.json')
-
-        // like pub/sub
-        
     }
 
     async main() {
@@ -44,30 +41,16 @@ class App {
             // get the media of the photograph
             const mediasArray = mediaData.filter(media => media.photographerId === id)
 
-            // instanciate likeSubjects here because we need it for MediaCard (not in constructor cuz
-            // it would create an instance before the dom is rendered, making it impossible to modify it)
-            
-
             mediasArray
             // create an instance of Media model for each media of the array
                 .map(media => new Media(media, photographer))
                 // now for each model created, we instanciate and render a card
                 .forEach(media => {
-                    const LikeSubject = new LikeSubjects()
-                    const Template = new MediaCard(media, LikeSubject)
+                    const Template = new MediaCard(media)
                     this.mediaSection.appendChild(
                         Template.createMediaCard()
                     )
-                    const myLikeCounter = new LikeCounter()
-                    LikeSubject.subscribe(myLikeCounter)
                 })
-            
-            
-            
-            // we can now instanciate a likeCounter now that the dm is rendered
-            // const LikeCounter = new LikeCounter()
-            // adding to our observers
-            
 
             // render filter form
             const Filter = new FilterForm(mediasArray, photographer)
