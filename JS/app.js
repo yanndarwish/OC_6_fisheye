@@ -40,18 +40,22 @@ class App {
 
             // get the media of the photograph
             const mediasArray = mediaData.filter(media => media.photographerId === id)
-
+            let likeSum = 0
             mediasArray
             // create an instance of Media model for each media of the array
                 .map(media => new Media(media, photographer))
                 // now for each model created, we instanciate and render a card
                 .forEach(media => {
+                    likeSum += media._likes
                     const Template = new MediaCard(media)
                     this.mediaSection.appendChild(
                         Template.createMediaCard()
                     )
                 })
 
+            // render totalLikes
+            const TotalLikeSum = new TotalCounter(likeSum)
+            TotalLikeSum.render()
             // render filter form
             const Filter = new FilterForm(mediasArray, photographer)
             Filter.render()
