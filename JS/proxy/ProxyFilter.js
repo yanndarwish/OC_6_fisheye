@@ -13,11 +13,9 @@ class ProxyFilter {
         
         let filteredData = Filter.mediaFilter(medias, option)
 
-        // stringify to prevent cache push malfunction 
+        // stringify to prevent cache push malfunction with objects
         this.cache.push(JSON.stringify(filteredData))
 
         return filteredData
     }
 }
-
-// BYPASSED BECAUSE OF THE CACHE MALFUNCTION, CHECK FILTERFORM.JS TO REACTIVATE

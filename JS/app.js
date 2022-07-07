@@ -38,16 +38,18 @@ class App {
             // we apply the method to render in DOM
             Template.createPhotographerBanner()
 
+            const likeSubject = new LikeSubject()
             // get the media of the photograph
             const mediasArray = mediaData.filter(media => media.photographerId === id)
+
             let likeSum = 0
             mediasArray
-            // create an instance of Media model for each media of the array
+                // create an instance of Media model for each media of the array
                 .map(media => new Media(media, photographer))
                 // now for each model created, we instanciate and render a card
                 .forEach(media => {
                     likeSum += media._likes
-                    const Template = new MediaCard(media)
+                    const Template = new MediaCard(media, likeSubject)
                     this.mediaSection.appendChild(
                         Template.createMediaCard()
                     )
@@ -56,10 +58,11 @@ class App {
             // render totalLikes
             const TotalLikeSum = new TotalCounter(likeSum)
             TotalLikeSum.render()
+            likeSubject.subscribe(TotalLikeSum)
             // render filter form
-            const Filter = new FilterForm(mediasArray, photographer)
+            const Filter = new FilterForm(mediasArray, photographer, likeSubject)
             Filter.render()
-        }  
+        }
     }
 }
 

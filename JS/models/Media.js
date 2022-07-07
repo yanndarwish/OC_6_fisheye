@@ -40,4 +40,12 @@ class Media {
     get price() {
         return this._price
     }
+
+    set like(action) {
+        if (action === 'DEC') {
+            this._likes -= 1
+        } else if (action === 'INC') {
+            this._likes += 1
+        }
+    }
 }

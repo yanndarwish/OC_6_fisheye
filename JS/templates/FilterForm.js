@@ -1,7 +1,8 @@
 class FilterForm {
-    constructor(Medias, photographer) {
+    constructor(Medias, photographer, likeSubject) {
         this._Medias = Medias
         this._photographer = photographer
+        this._likeSubject = likeSubject
 
         this.wrapper = document.createElement('div')
         this.filterWrapper = document.querySelector('.filter-wrapper')
@@ -21,7 +22,7 @@ class FilterForm {
         filteredMedias
             .map(media => new Media(media, this._photographer))
             .forEach(media => {
-                const Template = new MediaCard(media)
+                const Template = new MediaCard(media, this._likeSubject)
                 this.mediaSection.appendChild(Template.createMediaCard())
             })
     }
