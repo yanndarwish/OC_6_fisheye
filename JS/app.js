@@ -45,9 +45,7 @@ class App {
             // render modal form
             const Modal = new ModalForm(photographer)
             Modal.render()
-            // render carousel
-            const MyCarousel = new Carousel(mediasArray)
-            MyCarousel.render()
+            
         }
     }
 }

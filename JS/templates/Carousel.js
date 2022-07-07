@@ -1,7 +1,9 @@
 class Carousel {
-    constructor(Medias) {
+    constructor(Medias, photographer) {
         this._Medias = Medias
+        this._photographer = photographer
         this.$overlay = document.querySelector('.carousel-overlay')
+        this.$overlay.innerHTML = ''
         this.$wrapper = document.createElement('div')
         this.$wrapper.classList.add('carousel-container')
         this.$wrapper.setAttribute('role', document)
@@ -12,12 +14,28 @@ class Carousel {
         this.$wrapper.querySelector('.carousel').innerHTML = ''
 
         const triggers = document.querySelectorAll('.media-content')
-
         triggers.forEach(content => {
-            content.addEventListener('click', () => {
+            content.addEventListener('click', e => {
                 this.$overlay.setAttribute('data-visible', true)
                 this.$wrapper.querySelector('.carousel')
                     .setAttribute('data-visible', true)
+
+                const contentId = parseInt(e.target.getAttribute('data-key'))
+                const contentIndex = this._Medias.findIndex(elt => elt.id === contentId)
+                const thisContent = this._Medias[contentIndex]
+
+                const source = thisContent.image ? 
+                `/assets/Sample_Photos/${this._photographer._name}/${thisContent.image}` 
+                : `/assets/Sample_Photos/${this._photographer._name}/${thisContent.video}`
+
+                if (thisContent.image) {
+                    this.$wrapper.querySelector('.carousel').innerHTML = `<img src=${source} alt="${thisContent.title}" class="carousel-img">`
+                } else {
+                    this.$wrapper.querySelector('.carousel').innerHTML =
+                    `<video id="video" controls>
+                        <source src=${source} type="video/mp4" class="carousel-img">
+                    </video>`
+                } 
             })
         })
     }

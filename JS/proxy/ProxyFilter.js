@@ -8,7 +8,6 @@ class ProxyFilter {
         const cachedResult = parsedCache.find(elt => elt.key === option)  
 
         if (cachedResult) {
-            console.log(cachedResult)
             return cachedResult
         }
         

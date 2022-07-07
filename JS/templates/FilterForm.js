@@ -2,7 +2,6 @@ class FilterForm {
     constructor(Medias, photographer) {
         this._Medias = Medias
         this._photographer = photographer
-        // this._likeSubject = likeSubject
 
         this.wrapper = document.createElement('div')
         this.filterWrapper = document.querySelector('.filter-wrapper')
@@ -31,9 +30,14 @@ class FilterForm {
                 this.mediaSection.appendChild(Template.createMediaCard())
             })
         
+            // render total likes
         const TotalLikeSum = new TotalCounter(likeSum)
         TotalLikeSum.render()
         likeSubject.subscribe(TotalLikeSum)
+
+        // render carousel
+        const MyCarousel = new Carousel(filteredMedias, this._photographer)
+        MyCarousel.render()
         
     }
 
