@@ -30,13 +30,13 @@ class MediaCard {
     createMediaCard() {
         this._$wrapper.setAttribute('data-key', this._media.id)
 
-        const source = this._media._image ? `<img class="media-content" src="${this._media.source}" alt="${this._media.title}" data-key="${this._media.id}" width="350" height="300">`
-        : `<video class="media-content" data-key="${this._media.id}" width="350" height="300">
+        const source = this._media._image ? `<img class="media-content" src="${this._media.source}" alt="${this._media.title}" data-key="${this._media.id}" tabindex="0" width="350" height="300">`
+        : `<video class="media-content" data-key="${this._media.id}" tabindex="0" width="350" height="300">
                 <source src="${this._media.source}" type="video/mp4" alt="${this._media.title}">
             </video>
         `
         const mediaCard = `
-            <div class="media-img-container" tabindex="0">
+            <div class="media-img-container">
                 ${source}
             </div>
             <div class="media-card-footer flex">
