@@ -5,15 +5,16 @@ class ProxyFilter {
     sorter(medias, option) {
         // parse the stringified cache to manipulate
         const parsedCache = this.cache.map(elt => JSON.parse(elt))
-        const cachedResult = parsedCache.find(elt => elt.key === option) 
+        const cachedResult = parsedCache.find(elt => elt.key === option)  
 
         if (cachedResult) {
+            console.log(cachedResult)
             return cachedResult
         }
         
         let filteredData = Filter.mediaFilter(medias, option)
 
-        // stringify to prevent cache push malfunction with objects
+        // stringify to prevent cache push malfunction
         this.cache.push(JSON.stringify(filteredData))
 
         return filteredData

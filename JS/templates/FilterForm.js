@@ -1,8 +1,8 @@
 class FilterForm {
-    constructor(Medias, photographer, likeSubject) {
+    constructor(Medias, photographer) {
         this._Medias = Medias
         this._photographer = photographer
-        this._likeSubject = likeSubject
+        // this._likeSubject = likeSubject
 
         this.wrapper = document.createElement('div')
         this.filterWrapper = document.querySelector('.filter-wrapper')
@@ -14,20 +14,31 @@ class FilterForm {
     async filterMedias(option) {
         this.clearMediaSection()
 
+        const likeSubject = new LikeSubject()
+
         const filteredData = await this.ProxyFilter.sorter(this._Medias, option)
         // const filteredData = Filter.mediaFilter(this._Medias, option)
 
         const filteredMedias = filteredData.data
 
+        let likeSum = 0
+
         filteredMedias
             .map(media => new Media(media, this._photographer))
             .forEach(media => {
-                const Template = new MediaCard(media, this._likeSubject)
+                likeSum += media._likes
+                const Template = new MediaCard(media, likeSubject)
                 this.mediaSection.appendChild(Template.createMediaCard())
             })
+        
+        const TotalLikeSum = new TotalCounter(likeSum)
+        TotalLikeSum.render()
+        likeSubject.subscribe(TotalLikeSum)
+        
     }
 
-    onChangeFilter() {
+    applyFilter() {
+        this.filterMedias()
         this.wrapper
             .querySelector('form')
             .addEventListener('change', e => {
@@ -62,7 +73,7 @@ class FilterForm {
         `
 
         this.wrapper.innerHTML = filterForm
-        this.onChangeFilter()
+        this.applyFilter()
 
         this.filterWrapper.appendChild(this.wrapper)
     }

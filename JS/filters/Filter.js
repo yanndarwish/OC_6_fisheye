@@ -32,6 +32,11 @@ class Filter {
                     return 0;
                 })
             }
+        } else {
+            return {
+                key: 'unsorted', 
+                data: Medias
+            }
         }
     }
 }
