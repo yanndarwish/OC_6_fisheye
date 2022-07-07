@@ -1,7 +1,6 @@
 class PhotographerBanner {
     constructor(photographer) {
         this._photographer = photographer
-
     }
     createPhotographerBanner() {
         const priceElement = document.querySelector('.price');
@@ -11,7 +10,6 @@ class PhotographerBanner {
         document.querySelector('.country').innerHTML = this._photographer.country;
         document.querySelector('.profile-description').innerHTML = this._photographer.tagline;
         document.querySelector('.profile-pic').src = this._photographer.portrait;
-        document.querySelector('.modal-header-name').innerHTML = this._photographer.name;
         priceElement.innerHTML = this._photographer.price
     }
 }

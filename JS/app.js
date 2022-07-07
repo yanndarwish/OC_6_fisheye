@@ -62,6 +62,9 @@ class App {
             // render filter form
             const Filter = new FilterForm(mediasArray, photographer, likeSubject)
             Filter.render()
+            // render modal form
+            const Modal = new ModalForm(photographer)
+            Modal.render()
         }
     }
 }
