@@ -17,6 +17,7 @@ class Carousel {
         triggers.forEach(content => {
             content.addEventListener('click', e => {
                 this.$overlay.setAttribute('data-visible', true)
+                this.$overlay.setAttribute('aria-hidden', false)
                 this.$wrapper.querySelector('.carousel')
                     .setAttribute('data-visible', true)
 
@@ -50,13 +51,13 @@ class Carousel {
     createCarousel() {
         const carousel = `
         <button type="button" class="close-btn carousel-close" aria-label="Close">
-            <span aria-hidden="true" data-toggle="contact-carousel">&times;</span>
+            &times;
         </button>
-        <button>
-            <span class="fas fa-chevron-left arrow-left flex center">&lsaquo;</span>
+        <button class="arrow-left flex center">
+            <i class="fas fa-chevron-left">&lsaquo;</i>
         </button>
-        <button>
-            <span class="fas fa-chevron-right arrow-right flex center">&rsaquo;</span>
+        <button class="arrow-right flex center">
+            <i class="fas fa-chevron-right">&rsaquo;</i>
         </button>
         <div class="carousel flex">
             
