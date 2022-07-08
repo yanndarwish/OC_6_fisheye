@@ -37,6 +37,14 @@ class ModalForm {
                     this.$dialogWrapper.setAttribute('data-visible', false)
                 })
             })
+        
+        // close on escape press
+        document.addEventListener('keydown', (e) => {
+            if (e.keyCode === 27) {
+                this.$dialogWrapper.querySelector('[data-toggle="contact-modal"]')
+                .click()
+            }
+        })
     }
 
     openModal() {
