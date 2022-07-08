@@ -40,6 +40,7 @@ class Carousel {
                         </video>`
                     } 
                     this.controlCarousel(contentIndex)
+                    this.focusInCarousel()
                 }
                 carouselOpening()
             })
@@ -59,10 +60,17 @@ class Carousel {
         const leftArrow = this.$wrapper.querySelector('.arrow-left')
         const rightArrow = this.$wrapper.querySelector('.arrow-right')
 
-        rightArrow.addEventListener('click', () => {
-            counter++
-            if (counter === this._Medias.length) {
-                counter = 0
+        const changeMedia = (action) => {
+            if (action === 'INC') {
+                counter++
+                if (counter === this._Medias.length) {
+                    counter = 0
+                }
+            } else if (action === 'DEC') {
+                counter--
+                if (counter < 0) {
+                    counter = this._Medias.length - 1
+            }
             }
             const source = this._Medias[counter].image ? 
                 `/assets/Sample_Photos/${this._photographer._name}/${this._Medias[counter].image}` 
@@ -73,23 +81,53 @@ class Carousel {
                 : this.$wrapper.querySelector('.carousel').innerHTML = `<video id="video" controls>
                 <source src=${source} type="video/mp4" class="carousel-img">
             </video>`
-        })
+        }
 
-        leftArrow.addEventListener('click', () => {
-            counter--
-            if (counter < 0) {
-                counter = this._Medias.length - 1
-            }
-            const source = this._Medias[counter].image ? 
-                `/assets/Sample_Photos/${this._photographer._name}/${this._Medias[counter].image}` 
-                : `/assets/Sample_Photos/${this._photographer._name}/${this._Medias[counter].video}`
-                
-            this._Medias[counter].image ?
-                this.$wrapper.querySelector('.carousel').innerHTML = `<img src=${source} alt="${this._Medias[counter].title}" class="carousel-img">`
-                : this.$wrapper.querySelector('.carousel').innerHTML = `<video id="video" controls>
-                <source src=${source} type="video/mp4" class="carousel-img">
-            </video>`
+        rightArrow.addEventListener('click', () => {
+            changeMedia('INC')
         })
+        document.addEventListener("keyup", e => {
+                if (e.keyCode === 39) {
+                    changeMedia('INC')
+                }
+            })
+        leftArrow.addEventListener('click', () => {
+            changeMedia('DEC')
+        })
+        document.addEventListener("keyup", e => {
+            if (e.keyCode === 37) {
+                changeMedia('DEC')
+            }
+        })
+    }
+
+    focusInCarousel() {
+        const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+        const firstFocusableElement = this.$wrapper.querySelectorAll(focusableElements)[0]; // get first element to be focused inside carousel
+        const focusableContent = this.$wrapper.querySelectorAll(focusableElements);
+        const lastFocusableElement = focusableContent[focusableContent.length - 1]; // get last element to be focused inside carousel
+
+        // keep focus in carousel
+        document.addEventListener('keydown', function (e) {
+            let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+
+            if (!isTabPressed) {
+                return;
+            }
+
+            if (e.shiftKey) { // if shift key pressed for shift + tab combination
+                if (document.activeElement === firstFocusableElement) {
+                    lastFocusableElement.focus(); // add focus for the last focusable element
+                    e.preventDefault();
+                }
+            } else { // if tab key is pressed
+                if (document.activeElement === lastFocusableElement) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
+                    firstFocusableElement.focus(); // add focus for the first focusable element
+                    e.preventDefault();
+                }
+            }
+        });
+        firstFocusableElement.focus();
     }
 
     closeCarousel() {
@@ -98,6 +136,13 @@ class Carousel {
             this.$overlay.setAttribute('aria-hidden', false)
             this.$wrapper.querySelector('.carousel-close').setAttribute('data-visible', false)
         })
+        // close on escape press
+        document.addEventListener('keydown', (e) => {
+            if (e.keyCode === 27) {
+                this.$wrapper.querySelector('.carousel-close').click()
+            }
+        })
+
     }
 
     createCarousel() {
