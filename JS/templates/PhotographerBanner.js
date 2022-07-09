@@ -10,6 +10,8 @@ class PhotographerBanner {
         document.querySelector('.country').innerHTML = this._photographer.country;
         document.querySelector('.profile-description').innerHTML = this._photographer.tagline;
         document.querySelector('.profile-pic').src = this._photographer.portrait;
+        document.querySelector('.profile-pic').setAttribute('alt', this._photographer.name)
+
         priceElement.innerHTML = this._photographer.price
     }
 }

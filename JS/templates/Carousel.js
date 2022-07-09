@@ -9,6 +9,7 @@ class Carousel {
         this.$wrapper = document.createElement('div')
         this.$wrapper.classList.add('carousel-container')
         this.$wrapper.setAttribute('role', document)
+        this.$wrapper.setAttribute('aria-label', 'image closeup view')
     }
 
     openCarousel() {
@@ -147,14 +148,14 @@ class Carousel {
 
     createCarousel() {
         const carousel = `
-        <button type="button" class="close-btn carousel-close" aria-label="Close">
+        <button type="button" class="close-btn carousel-close" aria-label="Close dialog">
             &times;
         </button>
-        <button class="arrow-left flex center">
-            <i class="fas fa-chevron-left">&lsaquo;</i>
+        <button class="arrow-left flex center" aria-label='Previous image'>
+            &lsaquo;
         </button>
-        <button class="arrow-right flex center">
-            <i class="fas fa-chevron-right">&rsaquo;</i>
+        <button class="arrow-right flex center" aria-label='Next image'>
+            &rsaquo;
         </button>
         <div class="carousel flex">
             

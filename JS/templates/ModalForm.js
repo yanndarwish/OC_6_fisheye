@@ -88,31 +88,31 @@ class ModalForm {
         const modalContent = `
         <div>
             <div class="modal-header">
-                <h5>Contactez-moi <span class="modal-header-name">${photographer._name.replaceAll('_', ' ')}</span></h5>
-                <button type="button" class="close-btn contact-modal-close" data-toggle="contact-modal" aria-label="Close">
-                    <span aria-hidden="true" data-toggle="contact-modal">&times;</span>
+                <h5 id="modal-title">Contactez-moi <span class="modal-header-name">${photographer._name.replaceAll('_', ' ')}</span></h5>
+                <button type="button" class="close-btn contact-modal-close" data-toggle="contact-modal" aria-label="Close contact form">
+                    &times;
                 </button>
             </div>
             <div class="modal-body">
                     <form class="contact-form grid" action="#" method="POST">
                         <div>
-                            <label for="first" class="contact-label">Prénom</label>
-                            <input type="text" id="first" class="contact-input">
+                            <label id="firstname" for="first" class="contact-label">Prénom</label>
+                            <input type="text" id="first" class="contact-input" aria-labelledby="#firstname">
                         </div>
                         <div>
-                            <label for="last" class="contact-label">Nom</label>
-                            <input type="text" id="last"class="contact-input">
+                            <label id="lastname" for="last" class="contact-label">Nom</label>
+                            <input type="text" id="last"class="contact-input" aria-labelledby="#lastname">
                         </div>
                         <div>
-                            <label for="mail" class="contact-label">Email</label>
-                            <input type="text" id="mail"class="contact-input">
+                            <label id="email" for="mail" class="contact-label">Email</label>
+                            <input type="text" id="mail"class="contact-input" aria-labelledby="#email">
                         </div>
                         <div>
-                            <label for="message" class="contact-label">Votre message</label>
-                            <textarea id="message" class="contact-input" cols="30" rows="3"></textarea>
+                            <label id="your-mesage" for="message" class="contact-label">Votre message</label>
+                            <textarea id="message" class="contact-input" cols="30" rows="3" aria-labelledby="#your-message"></textarea>
                         </div>
                         <div class="modal-footer flex">
-                            <button type="submit" class="btn" data-toggle="contact-modal">Envoyer</button>
+                            <button type="submit" class="btn" data-toggle="contact-modal" aria-label="Send">Envoyer</button>
                         </div>
                     </form>
             </div>

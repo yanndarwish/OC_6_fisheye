@@ -61,7 +61,7 @@ class FilterForm {
         <form class="sorting flex" action="#" method="POST">
             <label class="sorting-label" for="standard-select">Trier par</label>
             <div class="select btn flex">
-                <select id="standard-select" name="filter-select" id="filter-select">
+                <select id="standard-select" name="filter-select" aria-label="Order By">
                     <option value="date">Date</option>
                     <option value="popular">Popularité</option>
                     <option value="title">Titre</option>
