@@ -291,7 +291,7 @@ select {
 }
 
 select:focus {
-    outline:1px solid black;
+    outline:1px solid blue;
 }
 
 .select {
@@ -518,28 +518,30 @@ padding-block:3rem;
 
 .arrow-left, 
 .arrow-right {
-    position:absolute;
+    position:fixed;
     top:50%;
     transform:translateY(-50%);
     cursor:pointer;
     z-index:10;
     font-size:6rem;
     color:white;
+    background-color: transparent;
+    border: none;
 }
 
 .carousel-close {
-    position:absolute;
+    position:fixed;
     cursor:pointer;
     z-index:1000;
-    top:1rem;
-    right:1rem;
+    top:1.5rem;
+    right:1.5rem;
     font-size:4rem;
 }
 
 .arrow-left{
-    left:1rem;
+    left:1.5rem;
 }
 
 .arrow-right{
-    right:1rem;
+    right:1.5rem;
 }
