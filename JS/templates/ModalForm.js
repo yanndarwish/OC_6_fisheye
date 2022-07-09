@@ -97,19 +97,19 @@ class ModalForm {
                     <form class="contact-form grid" action="#" method="POST">
                         <div>
                             <label id="firstname" for="first" class="contact-label">Prénom</label>
-                            <input type="text" id="first" class="contact-input" aria-labelledby="#firstname">
+                            <input type="text" id="first" class="contact-input" aria-labelledby="firstname">
                         </div>
                         <div>
                             <label id="lastname" for="last" class="contact-label">Nom</label>
-                            <input type="text" id="last"class="contact-input" aria-labelledby="#lastname">
+                            <input type="text" id="last"class="contact-input" aria-labelledby="lastname">
                         </div>
                         <div>
                             <label id="email" for="mail" class="contact-label">Email</label>
-                            <input type="text" id="mail"class="contact-input" aria-labelledby="#email">
+                            <input type="text" id="mail"class="contact-input" aria-labelledby="email">
                         </div>
                         <div>
-                            <label id="your-mesage" for="message" class="contact-label">Votre message</label>
-                            <textarea id="message" class="contact-input" cols="30" rows="3" aria-labelledby="#your-message"></textarea>
+                            <label id="your-message" for="message" class="contact-label">Votre message</label>
+                            <textarea id="message" class="contact-input" cols="30" rows="3" aria-labelledby="your-message"></textarea>
                         </div>
                         <div class="modal-footer flex">
                             <button type="submit" class="btn" data-toggle="contact-modal" aria-label="Send">Envoyer</button>

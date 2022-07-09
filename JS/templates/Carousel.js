@@ -8,7 +8,7 @@ class Carousel {
 
         this.$wrapper = document.createElement('div')
         this.$wrapper.classList.add('carousel-container')
-        this.$wrapper.setAttribute('role', document)
+        this.$wrapper.setAttribute('role', 'document')
         this.$wrapper.setAttribute('aria-label', 'image closeup view')
     }
 
