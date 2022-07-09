@@ -88,7 +88,7 @@ class ModalForm {
         const modalContent = `
         <div>
             <div class="modal-header">
-                <h5>Contactez-moi <span class="modal-header-name">${photographer._name}</span></h5>
+                <h5>Contactez-moi <span class="modal-header-name">${photographer._name.replaceAll('_', ' ')}</span></h5>
                 <button type="button" class="close-btn contact-modal-close" data-toggle="contact-modal" aria-label="Close">
                     <span aria-hidden="true" data-toggle="contact-modal">&times;</span>
                 </button>
