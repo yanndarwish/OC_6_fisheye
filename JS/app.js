@@ -1,4 +1,5 @@
 class App {
+    /*global DataApi, Photographer, PhotographerCard, PhotographerBanner, FilterForm, ModalForm*/
     constructor() {
         this.mainWrapper = document.querySelector('.main')
         this.mediaSection = document.querySelector('.media-section')

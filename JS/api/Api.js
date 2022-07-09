@@ -1,3 +1,4 @@
+
 class Api {
     constructor(url) {
         this._url = url
@@ -9,7 +10,7 @@ class Api {
             .catch(err => console.log('an error has occured', err))
     }
 }
-
+/* exported DataApi */
 class DataApi extends Api {
     constructor(url) {
         super(url)

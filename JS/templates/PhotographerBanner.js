@@ -5,7 +5,7 @@ class PhotographerBanner {
     createPhotographerBanner() {
         const priceElement = document.querySelector('.price');
 
-        document.querySelector('.profile-name').innerHTML = this._photographer.name.replaceAll('_', ' ');;
+        document.querySelector('.profile-name').innerHTML = this._photographer.name.replaceAll('_', ' ');
         document.querySelector('.city').innerHTML = this._photographer.city;
         document.querySelector('.country').innerHTML = this._photographer.country;
         document.querySelector('.profile-description').innerHTML = this._photographer.tagline;

@@ -1,3 +1,4 @@
+/*global Filter*/
 class ProxyFilter {
     constructor() {
         this.cache = []

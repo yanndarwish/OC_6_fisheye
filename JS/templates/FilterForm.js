@@ -1,3 +1,4 @@
+/*global ProxyFilter, LikeSubject, Media, MediaCard, TotalCounter, Carousel*/
 class FilterForm {
     constructor(Medias, photographer) {
         this._Medias = Medias
