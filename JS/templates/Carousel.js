@@ -36,7 +36,7 @@ class Carousel {
                         this.$wrapper.querySelector('.carousel').innerHTML = `<img src=${source} alt="${thisContent.title}" class="carousel-img">`
                     } else {
                         this.$wrapper.querySelector('.carousel').innerHTML =
-                        `<video id="video" controls>
+                        `<video id="video" controls  alt="${thisContent.title}">
                             <source src=${source} type="video/mp4" class="carousel-img">
                         </video>`
                     } 
